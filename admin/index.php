@@ -27,8 +27,10 @@ switch ($p) {
         $page_title = 'Loggedin Page';
     break;
     case 'logout':
-        $page = 'logout.php';
-        $page_title = 'Logout Page';
+        unset($_SESSION['username']);
+        session_destroy();
+        header("Location: ../");
+        exit;
     break;
     case 'view_cars':
         $page = 'view_cars.php';
@@ -71,4 +73,5 @@ include('./includes/header.php');
 include($page);
 
 // Include the footer file:
+
 include('./includes/footer.php');
