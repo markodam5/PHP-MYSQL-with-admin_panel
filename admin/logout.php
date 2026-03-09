@@ -3,8 +3,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-unset($_SESSION['username']);
+$_SESSION = array();
 session_destroy();
 
-header("Location: ../");
+header('Location: login');
 exit;
+
