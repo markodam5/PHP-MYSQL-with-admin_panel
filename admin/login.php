@@ -1,6 +1,6 @@
 <?php
 
-    if(isset($_POST['tbUsername']) || isset($_POST['tbPassword'])  ) {
+    if(isset($_POST['tbUsername']) && isset($_POST['tbPassword'])  ) {
        
         $username = $_POST['tbUsername'];
         $password = $_POST['tbPassword'];
