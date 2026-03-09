@@ -1,13 +1,7 @@
 <?php
 
-/* 
- *  This is the main page.
- *  This page includes the configuration file, 
- *  the templates, and any content-specific modules.
- */
-
-session_start();
 require('../config.php');
+session_start();
 
 // Validate what page to show:
 if (isset($_GET['page'])) {
@@ -25,12 +19,6 @@ switch ($p) {
     case 'loggedin':
         $page = 'loggedin.php';
         $page_title = 'Loggedin Page';
-    break;
-    case 'logout':
-        unset($_SESSION['username']);
-        session_destroy();
-        header("Location: ../");
-        exit;
     break;
     case 'view_cars':
         $page = 'view_cars.php';
@@ -65,13 +53,12 @@ if (!file_exists($page)) {
     $page_title = 'Admin Home Page';
 }
 
-// Include the header file:
+if ($page === 'logout.php') {
+    include($page);
+    exit;
+}
+
 include('./includes/header.php');
-
-// Include the content-specific module:
-// $page is determined from the above switch.
 include($page);
-
-// Include the footer file:
-
 include('./includes/footer.php');
+
